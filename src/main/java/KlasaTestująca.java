@@ -3,12 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KlasaTestująca {
-
     void wykonajTestyDlaObiektu(Object obj) {
         Method[] wszystkieMetody = obj.getClass().getDeclaredMethods();
         List<Method> metodyPrzedTestem = wybierzMetodyZAdnotacją(wszystkieMetody, PrzedMetodą.class);
         List<Method> metodyTesty = wybierzMetodyZAdnotacją(wszystkieMetody, MójTest.class);
-
 
         for (Method testDoWykonania : metodyTesty){
             wywołajMetody(obj, metodyPrzedTestem.toArray(new Method[]{}));
@@ -23,9 +21,11 @@ public class KlasaTestująca {
                     metoda.invoke(obj);
                 } catch (IllegalAccessException e) {
                     // TODO obsłużyć/zalogować
+                    System.err.println(e.getMessage() + "IllegalAccessException...  :P");
                     e.printStackTrace();
                 } catch (InvocationTargetException e) {
                     // TODO obsłużyć/zalogować
+                    System.err.println(e.getMessage() + "IllegalAccessException...  :P");
                     e.printStackTrace();
                 }
             }
